@@ -11,15 +11,19 @@ $(function () {
 
 			//fix temp path data missing z values
 			jmf.interpolateGeojson(window.geojsondata);
+			// jmf.interpolateGeojson(window.geojsondata2);
 
 			this.elevation = L.control.elevation();
 			this.initMap();
+
+			$('.update').on('click', this.updateTrail);
+			$('.add-control').on('click', _.partial(this.addControl, this.elevation));
+			$('.remove-control').on('click', _.partial(this.removeControl, this.elevation));
 
 		},
 
 		initMap: function () {
 			this.map = L.map('map');
-			this.elevation.addTo(this.map);
 
 			this.map.setView(L.latLng([39.060800, -105.503862]), 7);
 
@@ -30,13 +34,27 @@ $(function () {
 
 			var $this = this;
 
-
-
-
 			// this.fullDaysLayer = L.geoJson().addTo(this.map);
 			this.trail = L.geoJson(window.geojsondata.features[1],{
 			    onEachFeature: $this.elevation.addData.bind($this.elevation) //working on a better solution
 			}).addTo(this.map);
+		},
+
+		updateTrail: function (geojson) {
+			var geojson = window.geojsondata2.features[1];
+			this.elevation.clear();
+			this.trail.clearLayers();
+			this.trail.addData(geojson);
+		},
+
+		removeControl: function (control) {
+			control.removeFrom(this.map);
+		},
+		
+		addControl: function (control) {
+			control.addTo(this.map);
 		}
+
+
 	});
 });
