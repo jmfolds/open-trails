@@ -1,13 +1,13 @@
 $(function () {
 	'use strict';
-	jmf.MapView = Backbone.View.extend({
+	jmf.MapModel = Backbone.Model.extend({
 		initialize: function (opts) {
 			_.bindAll.apply(_, [this].concat(_.functions(this)));
 			
 			//TODO: separate refactor this into modules
 
 			opts = opts || {};
-			console.log('Initialized!');
+			console.log('MapModel Initialized!');
 
 			//fix temp path data missing z values
 			jmf.interpolateGeojson(window.geojsondata);
@@ -36,15 +36,18 @@ $(function () {
 
 			// this.fullDaysLayer = L.geoJson().addTo(this.map);
 			this.trail = L.geoJson(window.geojsondata.features[1],{
-			    onEachFeature: $this.elevation.addData.bind($this.elevation) //working on a better solution
+			    onEachFeature: $this.elevation.addData.bind($this.elevation)
 			}).addTo(this.map);
+
+			this.map.fitBounds(this.trail.getBounds());
 		},
 
-		updateTrail: function (geojson) {
+		updateTrail: function () {
 			var geojson = window.geojsondata2.features[1];
 			this.elevation.clear();
 			this.trail.clearLayers();
 			this.trail.addData(geojson);
+			this.map.fitBounds(this.trail.getBounds());
 		},
 
 		removeControl: function (control) {

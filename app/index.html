@@ -25,12 +25,17 @@
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+        <ul class="navigation">
+            <li><button class="update btn btn-default">update</button></li>
+            <li><button class="add-control btn btn-default">add</button></li>
+            <li><button class="remove-control btn btn-default">remove</button></li>
+        </ul>
 
-
-        <button class="update btn btn-default">update</button>
-        <button class="add-control btn btn-default">add</button>
-        <button class="remove-control btn btn-default">remove</button>
-      <div id="map"></div>
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger"></label>
+        <div class="site-container">
+            <div id="map"></div>
+        </div>
       
 
 
@@ -55,6 +60,9 @@
     <script src="bower_components/lodash/dist/lodash.compat.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/backbone/backbone.js"></script>
+    <script src="bower_components/backbone.babysitter/lib/backbone.babysitter.js"></script>
+    <script src="bower_components/backbone.wreqr/lib/backbone.wreqr.js"></script>
+    <script src="bower_components/marionette/lib/core/backbone.marionette.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -72,10 +80,12 @@
         <script src="scripts/vendor/d3.min.js"></script>
         <script src="scripts/vendor/Leaflet.Elevation-0.0.2.src.js"></script>
         <script src="scripts/namespace.js"></script>
+        <script src="scripts/app.js"></script>
         <script src="scripts/elevation.js"></script>
         <script src="scripts/interpolateGeojson.js"></script>
         <script src="scripts/data.js"></script>
-        <script src="scripts/map.js"></script>
+        <script src="scripts/models/map.model.js"></script>
+        <script src="scripts/views/map.view.js"></script>
         <!-- endbuild -->
         <script>
             $(function () {
@@ -84,9 +94,7 @@
 
                 };
                 //and pass into application
-                // jmf.app.start();
-                //temp until marionette
-                new jmf.MapView(opts);
+                jmf.app.start(opts);
             });
         </script>
 </body>
