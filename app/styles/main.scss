@@ -50,6 +50,7 @@ body, html {
   left: 0;
   right: 0;
   z-index: 1;
+  /* non critical styles*/
 }
 
 /* Nav Trigger */
@@ -57,29 +58,37 @@ body, html {
   /* critical styles - hide the checkbox input */
   position: absolute;
   clip: rect(0, 0, 0, 0);
+  /*non critical styles*/
 }
 
 label[for="nav-trigger"] {
   /* critical positioning styles */
   position: fixed;
-  left: 15px; top: 75px;
+  left: 0; top: 75px;
   z-index: 2;
   
   /* non-critical apperance styles */
   height: 30px;
   width: 30px;
+  border-radius: 0 10px 10px 0;
+  background-color: #000;
   cursor: pointer;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' width='30px' height='30px' viewBox='0 0 30 30' enable-background='new 0 0 30 30' xml:space='preserve'><rect width='30' height='6'/><rect y='24' width='30' height='6'/><rect y='12' width='30' height='6'/></svg>");
-  background-size: contain;
+  color: #fff;
+  stroke: #fff;
+  /*background-image: url("../images/point-right.svg");*/
+  /*background-size: contain;*/
 }
 
 /* Make the Magic Happen */
 .nav-trigger + label, .site-container {
-  transition: left 0.2s;
+  transition: left 0.5s, background-image 0s;
 }
 
 .nav-trigger:checked + label {
-  left: 215px;
+  left: 200px;
+  /*background-image: url("../images/point-left.svg");*/
+  /*background-color: red;*/
+  /*background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' width='30px' height='30px' viewBox='0 0 30 30' enable-background='new 0 0 30 30' xml:space='preserve'><rect width='30' height='6'/><rect y='24' width='30' height='6'/><rect y='12' width='30' height='6'/></svg>");*/
 }
 
 .nav-trigger:checked ~ .site-container {

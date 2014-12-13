@@ -6,6 +6,7 @@
     "modernizr": "~2.8.2",
     "lodash": "*",
     "backbone": "*",
-    "marionette": "*"
+    "marionette": "*",
+    "d3": "*"
   }
 }

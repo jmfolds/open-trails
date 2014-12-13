@@ -21,6 +21,7 @@
   "globals": {
     "jmf": true,
     "Backbone": true,
+    "Marionette": true,
     "_": true,
     "L": true
   }
