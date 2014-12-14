@@ -16,10 +16,6 @@ $(function () {
 			closedIcon: 'icon-arrow-right'
 		},
 
-		_wireEvents: function () {
-			this.trigger.addEventListener('click', this.toggle.bind(this));		
-		},
-
 		toggle: function () {
 			var _isActive = this.container.classList.contains('active');
 			if (_isActive) {
@@ -39,6 +35,14 @@ $(function () {
 			this.container.classList.remove('active');
 			this.trigger.classList.add(this.opts.closedIcon);
 			this.trigger.classList.remove(this.opts.openIcon);
+		},
+
+		_setWidth: function () {
+			//todo: pass in sidebar width?
+		},
+
+		_wireEvents: function () {
+			this.trigger.addEventListener('click', this.toggle.bind(this));
 		}
 	};
 });

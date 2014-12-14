@@ -12,19 +12,31 @@ $(function () {
 		},
 
 		ui: {
-			//
+			fileInput: '#upload-input'
 		},
 
 		events: {
 			'click .update': 'update',
 			'click .remove-control': 'remove',
 			'click .add-control': 'add',
+			'change #file-input': 'uploadKml'
 		},
 
 		el: '#nav-region',
 
-		update: function () {
-			jmf.app.vent.trigger('map:updateElevation');
+		uploadKml: function (evt) {
+			var file = evt.target.files[0],
+				$this = this;
+			jmf.filereader.getTrail(file, function (result) {
+				// var geojson = JSON.parse(result);
+				$this.update(result);
+			});
+		},
+
+
+
+		update: function (geojson) {
+			jmf.app.vent.trigger('map:updateElevation', geojson[0]);
 		},
 
 		remove: function () {

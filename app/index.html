@@ -29,7 +29,6 @@
     <![endif]-->
 
     <div class="full-page">
-
       <div class="row-offcanvas row-offcanvas-left full-page">
         <div id="map"></div>
 
@@ -40,6 +39,8 @@
                 <button class="update btn btn-default list-group-item">update</button>
                 <button class="add-control btn btn-default list-group-item">add</button>
                 <button class="remove-control btn btn-default list-group-item">remove</button>
+                <input id="file-input" type="file" />
+                <button class="upload-kml btn btn-default list-group-item">upload</button>
               </div>
             </div><!--/.sidebar-offcanvas-->
         </div>
@@ -73,6 +74,7 @@
     <script src="bower_components/backbone.wreqr/lib/backbone.wreqr.js"></script>
     <script src="bower_components/marionette/lib/core/backbone.marionette.js"></script>
     <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/togeojson/togeojson.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -89,6 +91,7 @@
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/offcanvas.js"></script>
         <script src="scripts/namespace.js"></script>
+        <script src="scripts/filereader.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/interpolateGeojson.js"></script>
         <script src="scripts/data.js"></script>

@@ -35,6 +35,7 @@ $(function () {
 			//create map controls
 			var $this = this;
 			this.elevationControl = L.control.elevation();
+			this.elevationControl.isVisible = false;
 			//elevation layer for the control
 			this.elevationLayer = L.geoJson(window.geojsondata.features[1],{
 			    onEachFeature: $this.elevationControl.addData.bind($this.elevationControl)
@@ -52,8 +53,8 @@ $(function () {
 			jmf.app.vent.trigger('nav:hide');
 		},
 
-		updateElevation: function () {
-			var geojson = window.geojsondata2.features[1];
+		updateElevation: function (geojson) {
+			geojson = geojson || window.geojsondata2.features[1];
 			this.elevationControl.clear();
 			this.elevationLayer.clearLayers();
 			this.elevationLayer.addData(geojson);
@@ -61,11 +62,17 @@ $(function () {
 		},
 
 		removeElevation: function () {
-			this.elevationControl.removeFrom(this.map);
+			if (this.elevationControl.isVisible) {
+				this.elevationControl.removeFrom(this.map);
+				this.elevationControl.isVisible = false;
+			}
 		},
 		
 		addElevation: function () {
-			this.elevationControl.addTo(this.map);
+			if (!this.elevationControl.isVisible) {
+				this.elevationControl.addTo(this.map);
+				this.elevationControl.isVisible = true;
+			}
 		}
 	});
 });
