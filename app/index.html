@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/font-icons.css" />
+    <link rel="stylesheet" href="styles/offcanvas.css" />
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/vendor/Leaflet.Elevation-0.0.2.css" />
     <!-- endbuild -->
@@ -26,21 +27,24 @@
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-        <div class="navigation">
-            <ul>
-                <li><button class="update btn btn-default">update</button></li>
-                <li><button class="add-control btn btn-default">add</button></li>
-                <li><button class="remove-control btn btn-default">remove</button></li>
-            </ul>
+
+    <div class="full-page">
+
+      <div class="row-offcanvas row-offcanvas-left full-page">
+        <div id="map"></div>
+
+        <div id="nav-region">
+            <button type="button" class="offcanvas-trigger btn btn-primary icon-arrow-right" data-toggle="offcanvas"></button>
+            <div class="sidebar-offcanvas" id="sidebar" role="navigation">
+              <div class="list-group">
+                <button class="update btn btn-default list-group-item">update</button>
+                <button class="add-control btn btn-default list-group-item">add</button>
+                <button class="remove-control btn btn-default list-group-item">remove</button>
+              </div>
+            </div><!--/.sidebar-offcanvas-->
         </div>
-        <!-- <div> -->
-            <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-            <label for="nav-trigger"></label>
-        <!-- </div> -->
-        <div class="site-container">
-            <div id="map"></div>
-        </div>
-      
+      </div><!--/row-->
+    </div>
 
 
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
@@ -83,6 +87,7 @@
     </script>
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
+        <script src="scripts/offcanvas.js"></script>
         <script src="scripts/namespace.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/interpolateGeojson.js"></script>

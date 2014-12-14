@@ -23,6 +23,7 @@
     "Backbone": true,
     "Marionette": true,
     "_": true,
-    "L": true
+    "L": true,
+    "offcanvas": true
   }
 }
